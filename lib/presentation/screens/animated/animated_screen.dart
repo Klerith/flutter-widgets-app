@@ -22,9 +22,9 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
 
     final random = Random();
 
-    width = random.nextInt(300) + 50;
-    height = random.nextInt(300) + 50;
-    borderRadius = random.nextInt(100) + 10;
+    width = random.nextInt(300) + 120;
+    height = random.nextInt(300) + 120;
+    borderRadius = random.nextInt(100) + 20;
     
     color = Color.fromRGBO(
       random.nextInt(255),  // red
@@ -48,11 +48,11 @@ class _AnimatedScreenState extends State<AnimatedScreen> {
         child: AnimatedContainer(
           duration: const Duration( milliseconds: 400 ),
           curve: Curves.elasticOut,
-          width: width,
-          height: height,
+          width: width <= 0 ? 0 : width,
+          height: height <= 0 ? 0 : height,
           decoration: BoxDecoration(
             color: color,
-            borderRadius: BorderRadius.circular(borderRadius)
+            borderRadius: BorderRadius.circular(borderRadius < 0 ? 0 : borderRadius)
           ),
         ),
       ),
